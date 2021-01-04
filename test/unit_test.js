@@ -33,6 +33,7 @@ describe('Database Connection', () => {
 describe('Users model', () => {
     var newUser;
     var found;
+    var auth;
     var holder = {
         name: "John Doe",
         token: "11ee"
@@ -41,6 +42,7 @@ describe('Users model', () => {
     before(async () => {
         newUser = await user.create(holder.name, holder.token);
         found = await user.find(newUser.uuid)
+        auth = await user.auth(newUser.uuid)
     })
 
     it("Create a new user", (done) => {
@@ -52,6 +54,12 @@ describe('Users model', () => {
     it("Find user by UUID", (done) => {
         assert.equal(found.uuid, newUser.uuid);
         assert.equal(found.name, newUser.name);
+
+        done();
+    })
+
+    it("Authenticate user by UUID", (done) => {
+        assert.equal(auth.valid, true);
 
         done();
     })
