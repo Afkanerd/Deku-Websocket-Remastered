@@ -22,14 +22,14 @@ const user = sequelize.define("User", {
 })
 
 /**
- * Class representing a sser
+ * Class representing a user
  */
 class Users {
     /**
      * create a new user
      * @param {STRING} name first and last name
      * @param {STRING} token generated token
-     * @returns {object} {UUID, name}
+     * @returns {Promise} an Object {uuid: STRING, name: STRING}
      */
     create(name, token) {
         return new Promise(async (resolve, reject) => {
