@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: users.js</title>
+    <title>JSDoc: Source: sms.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: users.js</h1>
+    <h1 class="page-title">Source: sms.js</h1>
 
     
 
@@ -28,8 +28,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>const {
     Sequelize,
-    DataTypes,
-    UUIDV4
+    DataTypes
 } = require("sequelize");
 const cred = require("../credentials.json")
 
@@ -39,37 +38,45 @@ const sequelize = new Sequelize(cred.DATABASE, cred.USERNAME, cred.PASSWORD, {
     dialect: "mysql"
 });
 
-const user = sequelize.define("User", {
-    uuid: {
-        type: DataTypes.UUID,
-        defaultValue: UUIDV4,
-        primaryKey: true
-    },
-    name: DataTypes.STRING,
-    token: DataTypes.STRING
+const sms = sequelize.define("SMS", {
+    sender: DataTypes.STRING,
+    reciever: DataTypes.STRING,
+    number: DataTypes.INTEGER,
+    body: DataTypes.STRING,
+    status: {
+        type: DataTypes.STRING,
+        defaultValue: "PENDING"
+    }
 })
 
 /**
- * Class representing a user
+ * Class representing an sms
  */
-class Users {
+class SMS {
     /**
      * create a new user
-     * @param {STRING} name first and last name
-     * @param {STRING} token generated token
-     * @returns {Promise} Object {uuid: STRING, name: STRING}
+     * @param {STRING} sender senders name
+     * @param {STRING} reciever recievers name
+     * @param {NUMBER} number recievers number
+     * @param {STRING} body message to send
+     * @returns {Promise} Object {sender: STRING, reciever: STRING, number: NUMBER, body: STRING, status: STRING}
      */
-    create(name, token) {
+    create(sender, reciever, number, body) {
         return new Promise(async (resolve, reject) => {
             try {
-                await user.sync();
-                var newUser = await user.create({
-                    name: name,
-                    token: token
+                await sms.sync();
+                var newSms = await sms.create({
+                    sender: sender,
+                    reciever: reciever,
+                    number: number,
+                    body: body
                 })
                 resolve({
-                    uuid: newUser.uuid,
-                    name: newUser.name
+                    sender: newSms.sender,
+                    reciever: newSms.reciever,
+                    number: newSms.number,
+                    body: newSms.body,
+                    status: newSms.status
                 })
             } catch (e) {
                 reject(e)
@@ -77,42 +84,22 @@ class Users {
         })
     }
 
-    /**
-     * find a user by uuid
-     * @param {STRING} uuid 
-     * @returns {Promise} Object {uuid, name}
-     */
-    find(uuid) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                await user.sync();
-                var found = await user.findAll({
-                    where: {
-                        uuid: uuid
-                    },
-                    raw: true
-                })
-                resolve({
-                    uuid: found[0].uuid,
-                    name: found[0].name
-                })
-            } catch (e) {
-                reject(e)
-            }
-        })
-    }
 }
 
 // (async () => {
-//     var inuser = new Users()
-//     var name = "John Doe";
-//     var token = "11ee";
-//     var uuid = "3a9467ed-f08c-4988-afdf-fa0772f4bf3d"
-//     var found = await inuser.find(uuid);
-//     console.log(found)
+//     var test = {
+//         sender: "John Doe",
+//         reciever: "Peter Head",
+//         number: 670918263,
+//         body: "hello world test sms"
+//     }
+
+//     var inSms = new SMS()
+//     var result = await inSms.create(test.sender, test.reciever, test.number, test.body);
+//     console.log(result)
 // })();
 
-module.exports = Users</code></pre>
+module.exports = SMS</code></pre>
         </article>
     </section>
 

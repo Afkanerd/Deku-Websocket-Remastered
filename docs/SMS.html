@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Users</title>
+    <title>JSDoc: Class: SMS</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Users</h1>
+    <h1 class="page-title">Class: SMS</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Users<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SMS<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Class representing a user</div>
+            <div class="class-description">Class representing an sms</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="Users"><span class="type-signature"></span>new Users<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SMS"><span class="type-signature"></span>new SMS<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="users.js.html">users.js</a>, <a href="users.js.html#line27">line 27</a>
+        <a href="sms.js.html">sms.js</a>, <a href="sms.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -149,7 +149,7 @@
     
 
     
-    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(name, token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(sender, reciever, number, body)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -193,7 +193,7 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>sender</code></td>
             
 
             <td class="type">
@@ -209,14 +209,14 @@
 
             
 
-            <td class="description last">first and last name</td>
+            <td class="description last">senders name</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>token</code></td>
+                <td class="name"><code>reciever</code></td>
             
 
             <td class="type">
@@ -232,7 +232,53 @@
 
             
 
-            <td class="description last">generated token</td>
+            <td class="description last">recievers name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NUMBER</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">recievers number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">STRING</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">message to send</td>
         </tr>
 
     
@@ -273,7 +319,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="users.js.html">users.js</a>, <a href="users.js.html#line34">line 34</a>
+        <a href="sms.js.html">sms.js</a>, <a href="sms.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -302,166 +348,7 @@
 
         
 <div class="param-desc">
-    Object {uuid: STRING, name: STRING}
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">(uuid)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    find a user by uuid
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>uuid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">STRING</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="users.js.html">users.js</a>, <a href="users.js.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Object {uuid, name}
+    Object {sender: STRING, reciever: STRING, number: NUMBER, body: STRING, status: STRING}
 </div>
 
 
