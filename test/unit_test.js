@@ -32,16 +32,25 @@ describe('Users model', () => {
     var newUser;
     var name;
     var token;
+    var found;
 
     before(async () => {
         name = "John Doe";
         token = "11ee";
         newUser = await user.create(name, token);
+        found = await user.find(newUser.uuid)
     })
 
     it("Create a new user", (done) => {
         assert.property(newUser, "uuid");
         assert.property(newUser, "name")
+        done();
+    })
+
+    it("Find user by UUID", (done) => {
+        assert.equal(found.uuid, newUser.uuid);
+        assert.equal(found.name, newUser.name);
+
         done();
     })
 })
