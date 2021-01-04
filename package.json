@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "doc": "./node_modules/jsdoc/jsdoc.js -c ./config.json",
     "start": "node server.js"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Afkanerd/Deku-Websocket-Remastered#readme",
   "dependencies": {
+    "mocha": "^8.2.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
