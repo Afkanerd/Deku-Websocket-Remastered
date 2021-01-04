@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "./node_modules/jsdoc/jsdoc.js -c ./config.json",
     "start": "node server.js"
   },
   "repository": {
@@ -21,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/Afkanerd/Deku-Websocket-Remastered/issues"
   },
-  "homepage": "https://github.com/Afkanerd/Deku-Websocket-Remastered#readme"
+  "homepage": "https://github.com/Afkanerd/Deku-Websocket-Remastered#readme",
+  "dependencies": {
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.6"
+  }
 }
