@@ -29,7 +29,7 @@ class Users {
      * create a new user
      * @param {STRING} name first and last name
      * @param {STRING} token generated token
-     * @returns {Promise} an Object {uuid: STRING, name: STRING}
+     * @returns {Promise} Object {uuid: STRING, name: STRING}
      */
     create(name, token) {
         return new Promise(async (resolve, reject) => {
@@ -48,6 +48,40 @@ class Users {
             }
         })
     }
+
+    /**
+     * find a user by uuid
+     * @param {STRING} uuid 
+     * @returns {Promise} Object {uuid, name}
+     */
+    find(uuid) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await user.sync();
+                var found = await user.findAll({
+                    where: {
+                        uuid: uuid
+                    },
+                    raw: true
+                })
+                resolve({
+                    uuid: found[0].uuid,
+                    name: found[0].name
+                })
+            } catch (e) {
+                reject(e)
+            }
+        })
+    }
 }
+
+// (async () => {
+//     var inuser = new Users()
+//     var name = "John Doe";
+//     var token = "11ee";
+//     var uuid = "3a9467ed-f08c-4988-afdf-fa0772f4bf3d"
+//     var found = await inuser.find(uuid);
+//     console.log(found)
+// })();
 
 module.exports = Users
