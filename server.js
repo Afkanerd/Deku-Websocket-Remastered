@@ -1,5 +1,8 @@
 const net = require('net');
+const Users = require("./models/users.js")
 const port = 3000;
+
+const user = new Users();
 
 function createServerConnection() {
     return new Promise((resolve, reject) => {
@@ -21,8 +24,16 @@ function createServerConnection() {
         serverConnection.on('connection', (connection) => {
             console.log('A client connected');
 
-            connection.on("data", (data) => {
-                console.log(JSON.parse(data))
+            // incoming data from client
+            connection.on("data", async (data) => {
+                let info = JSON.parse(data);
+                let result = await user.auth(info.uuid);
+
+                if (result.valid == false) {
+                    connection.end("Access denied")
+                } else {
+                    connection.write('Welcome ' + info.name)
+                }
             })
 
             connection.on('end', () => {

@@ -2,9 +2,9 @@ const net = require('net');
 const port = 3000
 
 const info = {
-    uuid: "",
-    name: "",
-    token: ""
+    uuid: "01427117-7977-400b-bc31-978817e8cd8c",
+    name: "John Doe",
+    token: "1123"
 }
 
 var client = net.connect({
@@ -13,7 +13,13 @@ var client = net.connect({
     console.log('Connected to server');
 })
 
+// send data to server
 client.write(JSON.stringify(info));
+
+// incoming data from server
+client.on('data', (data) => {
+    console.log(data.toString())
+})
 
 client.on('end', () => {
     console.log('Disconnected from Server');
