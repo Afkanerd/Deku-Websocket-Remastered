@@ -14,18 +14,22 @@ function createServerConnection() {
     })
 }
 
-// (async () => {
-//     try {
-//         let serverConnection = await createServerConnection();
+(async () => {
+    try {
+        let serverConnection = await createServerConnection();
 
-//         serverConnection.on('connection', (client) => {
-//             console.log('A client connected');
+        serverConnection.on('connection', (connection) => {
+            console.log('A client connected');
 
-//             client.on('end', () => {
-//                 console.log('A client disconnected')
-//             })
-//         })
-//     } catch (err) {
-//         throw err
-//     }
-// })();
+            connection.on("data", (data) => {
+                console.log(JSON.parse(data))
+            })
+
+            connection.on('end', () => {
+                console.log('A client disconnected')
+            })
+        })
+    } catch (err) {
+        throw err
+    }
+})();
