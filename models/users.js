@@ -34,7 +34,7 @@ class Users {
         return new Promise(async (resolve, reject) => {
             try {
                 var result = await this.find(uuid);
-                if (result == "User not found") {
+                if (result.length < 1) {
                     resolve({
                         valid: false
                     })
@@ -87,7 +87,7 @@ class Users {
                     raw: true
                 })
                 if (found.length < 1) {
-                    resolve("User not found")
+                    resolve([])
                 }
                 resolve({
                     uuid: found[0].uuid,
