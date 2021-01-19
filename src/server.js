@@ -1,5 +1,5 @@
 const net = require('net');
-const Users = require("./models/users.js")
+const Users = require("../models/users.js")
 const port = 3000;
 
 const user = new Users();
