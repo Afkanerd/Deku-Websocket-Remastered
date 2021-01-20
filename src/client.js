@@ -1,5 +1,8 @@
 const net = require('net');
 const port = 3000
+const SMS = require("../models/sms.js")
+
+const sms = new SMS();
 
 const info = {
     uuid: "01427117-7977-400b-bc31-978817e8cd8c",
