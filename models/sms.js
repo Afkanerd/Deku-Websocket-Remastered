@@ -2,11 +2,11 @@ const {
     Sequelize,
     DataTypes
 } = require("sequelize");
-const cred = require("../credentials.json")
+require("dotenv").config()
 
 // create connection : new Sequelize(database, username, password, {host, dialect})
-const sequelize = new Sequelize(cred.DATABASE, cred.USERNAME, cred.PASSWORD, {
-    host: cred.HOST,
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: "mysql"
 });
 

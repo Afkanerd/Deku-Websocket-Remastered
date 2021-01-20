@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Afkanerd/Deku-Websocket-Remastered#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
     "mocha": "^8.2.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"

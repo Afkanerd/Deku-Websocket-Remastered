@@ -3,11 +3,11 @@ const {
     DataTypes,
     UUIDV4
 } = require("sequelize");
-const cred = require("../credentials.json")
+require("dotenv").config()
 
 // create connection : new Sequelize(database, username, password, {host, dialect})
-const sequelize = new Sequelize(cred.DATABASE, cred.USERNAME, cred.PASSWORD, {
-    host: cred.HOST,
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: "mysql"
 });
 
@@ -100,13 +100,13 @@ class Users {
     }
 }
 
-// (async () => {
-//     var inuser = new Users()
-//     var name = "John Doe";
-//     var token = "11ee";
-//     var uuid = "01427117-7977-400b-bc31-978817e8cd8c"
-//     var found = await inuser.auth(uuid);
-//     console.log(found)
-// })();
+(async () => {
+    var inuser = new Users()
+    var name = "John Doe";
+    var token = "11ee";
+    var uuid = "01427117-7977-400b-bc31-978817e8cd8c"
+    var found = await inuser.auth(uuid);
+    console.log(found)
+})();
 
 module.exports = Users
