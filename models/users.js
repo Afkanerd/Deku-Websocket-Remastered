@@ -100,13 +100,13 @@ class Users {
     }
 }
 
-(async () => {
-    var inuser = new Users()
-    var name = "John Doe";
-    var token = "11ee";
-    var uuid = "01427117-7977-400b-bc31-978817e8cd8c"
-    var found = await inuser.auth(uuid);
-    console.log(found)
-})();
+// (async () => {
+//     var inuser = new Users()
+//     var name = "John Doe";
+//     var token = "11ee";
+//     var uuid = "01427117-7977-400b-bc31-978817e8cd8c"
+//     var found = await inuser.auth(uuid);
+//     console.log(found)
+// })();
 
 module.exports = Users

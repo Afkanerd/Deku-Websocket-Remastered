@@ -1,4 +1,5 @@
 const net = require('net');
+const NetKeepAlive = require('net-keepalive')
 const Users = require("../models/users.js")
 const port = 3000;
 
@@ -23,6 +24,15 @@ function createServerConnection() {
 
         serverConnection.on('connection', (connection) => {
             console.log('A client connected');
+
+            // enable keepAlive
+            connection.setKeepAlive(true, 20000);
+
+            // Set TCP_KEEPINTVL for this specific socket
+            NetKeepAlive.setKeepAliveInterval(connection, 10000)
+
+            // and TCP_KEEPCNT
+            NetKeepAlive.setKeepAliveProbes(connection, 3)
 
             // incoming data from client
             connection.on("data", async (data) => {
